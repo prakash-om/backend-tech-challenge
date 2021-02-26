@@ -41,7 +41,7 @@ This project is a scheduler which runs for weekly basis (as of now 3 minutes for
 * Run as SpringBoot application.
 
 #### High level service 
-https://app.diagrams.net/#G1QbU4xEOHvqbMJmjcAIP7KiaVPaBv6oqk 
+![Test](src/main/resources/architecture.png?raw=true "Architecture Diagram")
 
 #### Notes
 * Service has designed to run as multiple instances 
