@@ -7,42 +7,47 @@ This project is a scheduler which runs for weekly basis (as of now 3 minutes for
 
 ##### Null SerialNumber retrieval from database
 * As we know there are millions of records in table and retrieving all the records at one shot is not god idea, so I am using limit clause in database query. limit clause have start and max inputs.
+* example: (SELECT id, serial_number from document where serial_number is null limit startIndex, max)
 * max property in above clause is present in application.properties file and it is configurable according your hardware capacity
-* start index is something which is maintained in database table called query_offset. Reason is start and max 
+* start index is the starting row from where records fetch has to start. it is  maintained in database table called query_offset. Reason for creating separate table is for start index is, suppose there are multiple instance running of this service then startIndex will be used to avoid duplicate rows.    
 
 ##### Messaging queue usage to support bulk messages
+* Once documents are retrieved from database it is pushed to rabbitmq queues to further process.
+* queue listener will registered in the beginning. There are 3 queues used in this service. 
+* once queue receive message it will connect to mock service  and try to get result for id. There is threadpool used when connecting to mockserivce and poolsize is configurable. 
+* If mock result is INCOMPLETE then there is a retry which will happen for that id. The max retry count is configurable. 
+* If result is OK then message will be push to other queue.
+* I am not updating serialNumber directly, instead I am pushing data to queue for batch update process. 
 
 ##### Java BiqQueues to support bulk database operations 
+* BiqQueues are used as java persistent queue which holds up the document till batch size (configurable) then once the limit is exceeds it will call the batch update api which will update the serialNumber in batches 
 
- * SchedulerService retrieve the documents without a serial number and start processing by putting them into messaging queue (RabbitMQ is used)
- * In above task the scheduler will not retrieve all the documents at one go, but limit will be applied while querying.max limit is configurable which is present in appliction.propertis file as db.max.rows property.  
- * call the external client endpoint at ${client.api.uri} for each document separately (mock is provided)
- * check the returned processing status and if OK, extract the serial number
- * persist the serial number for the document
+##### Bonus optional challenges
+* api endpoint: http://localhost:8080/V1/documents PATCH request which expect id and pages input.
+* The patch has been introduced for this purpose it's a asyc request which responded with 202 accepted status.
+* Once the request comes it will directed to queue, then once the listener pick that up it will push the patch data to BiqQueue. 
+* And once the max result in the queue is reached then, everything from BigQueue is dequeued and pushed to batch operations. 
 
-Technical constraints and details:
-* Client's API is not very efficient and each call is very heavy, up to several seconds
-* Client API only expects document id
-* It's planned to deploy multiple instances of your Spring Boot service
+#### Technology used 
+* Java
+* SpringBoot
+* H2 Database
+* RabbitMQ
+* BiqQueue
 
-#### Bonus optional challenges
+#### How Run
+* Download project and import as Gradle project.
+* Make sure you are running RabbitMQ instance and give the configuration in applicaiton.properties file.
+* Run as SpringBoot application.
 
-Imagine there is another microservice called document-collector where users can add or delete pages to existing documents.
-You are not concerned how the service works. All you need to know is that document-collector calls your service to update page count in the database.
-Create a REST endpoint that accepts document id and number of added/removed pages (not the total number of pages in the document).
-Update the document count in the database.
-
-`Technical constraints: new endpoint should handle thousands of requests each second as there are several instances of document-collector running.`
-
-Optionally cover all your code with tests.
-
+#### High level service 
+https://app.diagrams.net/#G1QbU4xEOHvqbMJmjcAIP7KiaVPaBv6oqk 
 
 #### Notes
+* Service has designed to run as multiple instances 
+* Database is used here is H2 in memory for simplicity purpose but can be changed through configuration.
+* Java BiqQueue is used for persistent queues and can be configured for any other technology like redis or kafka.
+* Update status has not maintained for patch api (bonus challenges).
 
-You are encouraged to make arbitrary decisions on details that are not specified. Please let us know about these decisions and reasoning behind them in the readme.
 
-Do not feel pressured to cover all the points.
-It's much better to cover few points and do them well than do half-hearted job on all of them.
-Feel free to use the provided skeleton project or start from scratch on your own.
 
-You can use Maven or Gradle.
