@@ -1,0 +1,14 @@
+net/gini/challenge/controller/ChallengeControllerTest.java
+ net.gini.challenge.controller.ChallengeControllerTest
+net/gini/challenge/ChallengeApplicationTests.java
+ net.gini.challenge.ChallengeApplicationTests
+com/gini/challenge/model/DocumentIdPagesTest.java
+ com.gini.challenge.model.DocumentIdPagesTest
+com/gini/challenge/model/QueryOffsetStatusTest.java
+ com.gini.challenge.model.QueryOffsetStatusTest
+com/gini/challenge/model/DocumentTest.java
+ com.gini.challenge.model.DocumentTest
+com/gini/challenge/model/DocumentIdSerialNumberTest.java
+ com.gini.challenge.model.DocumentIdSerialNumberTest
+com/gini/challenge/model/RetryMockCounterTest.java
+ com.gini.challenge.model.RetryMockCounterTest

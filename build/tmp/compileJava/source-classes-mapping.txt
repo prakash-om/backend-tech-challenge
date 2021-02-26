@@ -1,0 +1,67 @@
+net/gini/challenge/controller/ChallengeController.java
+ net.gini.challenge.controller.ChallengeController
+net/gini/challenge/dao/QueryStatusDAO.java
+ net.gini.challenge.dao.QueryStatusDAO
+net/gini/challenge/dao/RetryMockCounterDAO.java
+ net.gini.challenge.dao.RetryMockCounterDAO
+net/gini/challenge/service/BiqQueueUpdateSerialNumberService.java
+ net.gini.challenge.service.BiqQueueUpdateSerialNumberService
+net/gini/challenge/service/DocumentRetriveServiceImpl.java
+ net.gini.challenge.service.DocumentRetriveServiceImpl
+net/gini/challenge/service/BiqQueuePatchServiceImpl.java
+ net.gini.challenge.service.BiqQueuePatchServiceImpl
+net/gini/challenge/senders/PushDataSetToApiExchangeService.java
+ net.gini.challenge.senders.PushDataSetToApiExchangeService
+net/gini/challenge/model/QueryOffsetStatus.java
+ net.gini.challenge.model.QueryOffsetStatus
+net/gini/challenge/service/SchedulerService.java
+ net.gini.challenge.service.SchedulerService
+net/gini/challenge/repo/RetryMockCounterRepository.java
+ net.gini.challenge.repo.RetryMockCounterRepository
+net/gini/challenge/dao/DocumentDAO.java
+ net.gini.challenge.dao.DocumentDAO
+net/gini/challenge/ChallengeApplication.java
+ net.gini.challenge.ChallengeApplication
+net/gini/challenge/utils/Constants.java
+ net.gini.challenge.utils.Constants
+net/gini/challenge/senders/PushDataSetToDBExchangeService.java
+ net.gini.challenge.senders.PushDataSetToDBExchangeService
+net/gini/challenge/mock/ExpensiveClientAPIMock.java
+ net.gini.challenge.mock.ExpensiveClientAPIMock
+ net.gini.challenge.mock.ExpensiveClientAPIMock$1
+ net.gini.challenge.mock.ExpensiveClientAPIMock$ClientApiResponseTransformer
+net/gini/challenge/senders/PushDataSetToPatchOperationService.java
+ net.gini.challenge.senders.PushDataSetToPatchOperationService
+net/gini/challenge/service/BiqQueuePatchService.java
+ net.gini.challenge.service.BiqQueuePatchService
+net/gini/challenge/model/DocumentIdSerialNumber.java
+ net.gini.challenge.model.DocumentIdSerialNumber
+net/gini/challenge/service/DocumentRetriveService.java
+ net.gini.challenge.service.DocumentRetriveService
+net/gini/challenge/exception/GiniChallengeException.java
+ net.gini.challenge.exception.GiniChallengeException
+net/gini/challenge/dao/RetryMockCounterDAOImpl.java
+ net.gini.challenge.dao.RetryMockCounterDAOImpl
+net/gini/challenge/repo/DocumentRepository.java
+ net.gini.challenge.repo.DocumentRepository
+net/gini/challenge/listeners/APIPatchUpdateRequestReceiver.java
+ net.gini.challenge.listeners.APIPatchUpdateRequestReceiver
+net/gini/challenge/model/DocumentIdPages.java
+ net.gini.challenge.model.DocumentIdPages
+net/gini/challenge/service/BiqQueueUpdateSerialNumberServiceImpl.java
+ net.gini.challenge.service.BiqQueueUpdateSerialNumberServiceImpl
+net/gini/challenge/model/RetryMockCounter.java
+ net.gini.challenge.model.RetryMockCounter
+net/gini/challenge/repo/QueryStatusRepository.java
+ net.gini.challenge.repo.QueryStatusRepository
+net/gini/challenge/dao/DocumentDAOImpl.java
+ net.gini.challenge.dao.DocumentDAOImpl
+net/gini/challenge/model/Document.java
+ net.gini.challenge.model.Document
+net/gini/challenge/listeners/DBResultReceiver.java
+ net.gini.challenge.listeners.DBResultReceiver
+ net.gini.challenge.listeners.DBResultReceiver$1
+net/gini/challenge/listeners/APIResultReceiver.java
+ net.gini.challenge.listeners.APIResultReceiver
+net/gini/challenge/dao/QueryStatusDAOImpl.java
+ net.gini.challenge.dao.QueryStatusDAOImpl
