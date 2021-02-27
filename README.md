@@ -41,6 +41,7 @@
 
 #### How Run
 * Using Docker 
+* Download this git repo and execute below command
 * sudo docker image build -t backend-challenge .
 * sudo docker network create gini
 * sudo docker-compose up
