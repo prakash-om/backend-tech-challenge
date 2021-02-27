@@ -1,6 +1,6 @@
 #### Gini Challenge
 
-This project is a scheduler which runs for weekly basis (as of now 3 minutes for testing) and check the database for null serial numbers and update them with the help of mock service.
+* This project is a scheduler which runs for weekly basis (as of now 3 minutes for testing) and check the database for null serial numbers and update them with the help of mock service.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### There are major four components which by which I am trying to solve this challenge
