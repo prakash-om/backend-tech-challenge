@@ -1,7 +1,7 @@
 #### Gini Challenge
 
 This project is a scheduler which runs for weekly basis (as of now 3 minutes for testing) and check the database for null serial numbers and update them with the help of mock service.
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### There are major four components which by which I am trying to solve this challenge
 
@@ -28,6 +28,8 @@ This project is a scheduler which runs for weekly basis (as of now 3 minutes for
 * Once the request comes it will directed to queue, then once the listener pick that up it will push the patch data to BiqQueue. 
 * And once the max result in the queue is reached then, everything from BigQueue is dequeued and pushed to batch operations. 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### Technology used 
 * Java
 * SpringBoot
@@ -35,19 +37,33 @@ This project is a scheduler which runs for weekly basis (as of now 3 minutes for
 * RabbitMQ
 * BiqQueue
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### How Run
+* Using Docker 
+* sudo docker image build -t backend-challenge .
+* sudo docker network create gini
+* sudo docker-compose up
+* Using IDE
 * Download project and import as Gradle project.
 * Make sure you are running RabbitMQ instance and give the configuration in applicaiton.properties file.
 * Run as SpringBoot application.
 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### High level service 
 ![Test](src/main/resources/architecture.png?raw=true "Architecture Diagram")
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Notes
 * Service has designed to run as multiple instances 
 * Database is used here is H2 in memory for simplicity purpose but can be changed through configuration.
 * Java BiqQueue is used for persistent queues and can be configured for any other technology like redis or kafka.
 * Update status has not maintained for patch api (bonus challenges).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 

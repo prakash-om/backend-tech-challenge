@@ -1,0 +1,30 @@
+version: "3.0"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq-container
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - gini
+
+  backend-challenge:
+    image: backend-challenge
+    container_name: backend-challenge
+    ports:
+      - "8080:8080"
+    environment:
+      - spring_rabbitmq_host=rabbitmq-container
+      - spring_rabbitmq_port=5672
+      - spring_rabbitmq_username=guest
+      - spring_rabbitmq_password=guest
+    depends_on:
+      - rabbitmq
+    networks:
+      - gini
+networks:
+  gini:
+    external:
+      name: gini
